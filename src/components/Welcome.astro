@@ -1,0 +1,140 @@
+---
+import astroLogo from '../assets/astro.svg';
+import background from '../assets/background.svg';
+import Whatsapp from '../components/Whatsapp.astro';
+import Footer from '../components/Footer.astro';
+import logoVisualOphthalmics from '../assets/logoVisualO.jpeg';
+---
+
+<div id="container">
+  <img id="background" src={background.src} alt="" fetchpriority="high" />
+  <main class="container-body">
+    <section id="hero">
+      <h1>Bienvenido a Visual Ophthalmics</h1>
+      <img src={logoVisualOphthalmics.src} alt="Logo Visual Ophthalmics">
+    </section>
+  </main>
+	<!-- WhatsApp flotante -->
+	<div id="whatsapp-float">
+		<Whatsapp />
+	</div>
+	
+	<!-- Footer fijo abajo -->
+	<Footer />
+</div>
+
+<style>
+	#background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		filter: blur(100px);
+		background-color: #015b97;
+	}
+
+	#container {
+		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		position: relative; /* Necesario para el WhatsApp flotante */
+		min-height: 100vh; /* Ocupa al menos el 100% del viewport */
+		display: flex;
+		flex-direction: column;
+	}
+
+	main {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	h1 {
+		font-size: 2rem;
+		margin-top: 0.25em;
+		color: #fff;
+	}
+
+	h2 {
+		margin: 0 0 1em;
+		font-weight: normal;
+		color: #111827;
+		font-size: 20px;
+	}
+.container-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrado vertical */
+    align-items: center; /* Centrado horizontal */
+  }
+
+  #hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Para centrar el texto */
+    width: 100%;
+  }
+
+  /* Ajustes para el logo */
+  #hero img {
+    max-width: 25vw; /* Controla el tamaño del logo */
+    height: auto;
+    margin-top: 20px;
+	border-radius: 12px;
+  }
+
+	/* WhatsApp flotante */
+	#whatsapp-float {
+	position: fixed;
+	bottom: 100px; /* Ajusta según la altura de tu footer */
+	right: 20px;
+	z-index: 1000; /* Por encima de otros elementos */
+	}
+
+	/* Footer siempre abajo */
+	footer {
+	position: relative;
+	bottom: 0;
+	width: 80%;
+	}
+
+	@media screen and (max-height: 368px) {
+		#news {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		#container {
+			display: flex;
+			flex-direction: column;
+		}
+
+		#hero {
+			display: block;
+			padding-top: 10%;
+		}
+
+		#links {
+			flex-wrap: wrap;
+		}
+
+		#links a.button {
+			padding: 14px 18px;
+		}
+
+		#news {
+			right: 16px;
+			left: 16px;
+			bottom: 2.5rem;
+			max-width: 100%;
+		}
+
+		h1 {
+			line-height: 1.5;
+		}
+	}
+</style>
